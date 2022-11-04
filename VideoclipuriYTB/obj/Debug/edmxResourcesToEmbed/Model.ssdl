@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ResurseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categorii">
+    <Key>
+      <PropertyRef Name="Id_Categorie" />
+    </Key>
+    <Property Name="Id_Categorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume_Categorie" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Taguri">
+    <Key>
+      <PropertyRef Name="Id_Tag" />
+    </Key>
+    <Property Name="Id_Tag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Categorie" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Videoclipuri">
+    <Key>
+      <PropertyRef Name="Id_Videoclip" />
+    </Key>
+    <Property Name="Id_Videoclip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Link" Type="varchar(max)" Nullable="false" />
+    <Property Name="Tag" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Taguri__Categori__25869641">
+    <End Role="Categorii" Type="Self.Categorii" Multiplicity="1" />
+    <End Role="Taguri" Type="Self.Taguri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorii">
+        <PropertyRef Name="Id_Categorie" />
+      </Principal>
+      <Dependent Role="Taguri">
+        <PropertyRef Name="Categorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Videoclipur__Tag__36B12243">
+    <End Role="Taguri" Type="Self.Taguri" Multiplicity="1" />
+    <End Role="Videoclipuri" Type="Self.Videoclipuri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Taguri">
+        <PropertyRef Name="Id_Tag" />
+      </Principal>
+      <Dependent Role="Videoclipuri">
+        <PropertyRef Name="Tag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ResurseModelStoreContainer">
+    <EntitySet Name="Categorii" EntityType="Self.Categorii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Taguri" EntityType="Self.Taguri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Videoclipuri" EntityType="Self.Videoclipuri" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Taguri__Categori__25869641" Association="Self.FK__Taguri__Categori__25869641">
+      <End Role="Categorii" EntitySet="Categorii" />
+      <End Role="Taguri" EntitySet="Taguri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Videoclipur__Tag__36B12243" Association="Self.FK__Videoclipur__Tag__36B12243">
+      <End Role="Taguri" EntitySet="Taguri" />
+      <End Role="Videoclipuri" EntitySet="Videoclipuri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

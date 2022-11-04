@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ResurseModelStoreContainer" CdmEntityContainer="ResurseEntities">
+    <EntitySetMapping Name="Categorii">
+      <EntityTypeMapping TypeName="ResurseModel.Categorii">
+        <MappingFragment StoreEntitySet="Categorii">
+          <ScalarProperty Name="Id_Categorie" ColumnName="Id_Categorie" />
+          <ScalarProperty Name="Nume_Categorie" ColumnName="Nume_Categorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taguri">
+      <EntityTypeMapping TypeName="ResurseModel.Taguri">
+        <MappingFragment StoreEntitySet="Taguri">
+          <ScalarProperty Name="Id_Tag" ColumnName="Id_Tag" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="Categorie" ColumnName="Categorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videoclipuri">
+      <EntityTypeMapping TypeName="ResurseModel.Videoclipuri">
+        <MappingFragment StoreEntitySet="Videoclipuri">
+          <ScalarProperty Name="Id_Videoclip" ColumnName="Id_Videoclip" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
